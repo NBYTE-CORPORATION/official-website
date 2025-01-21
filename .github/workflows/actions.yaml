@@ -6,7 +6,7 @@ on:
       - main  # 메인 브랜치에 푸시될 때만 실행
 
 jobs:
-  build:
+  build-deploy:
     runs-on: ubuntu-latest
 
     steps:
