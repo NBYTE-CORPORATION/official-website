@@ -1,627 +1,706 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NBYTE — 복잡한 문제를 단순하고 강력한 소프트웨어로 해결합니다.">
+  <title>NBYTE — Build the Future.</title>
 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <meta name="copyright" content="MACode ID, https://macodeid.com/">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <title>Revetive - Free Business Corporate Template By MACode ID</title>
+    :root {
+      --bg:           #08090a;
+      --bg-2:         #0e1012;
+      --bg-3:         #14171a;
+      --border:       rgba(255,255,255,0.07);
+      --border-light: rgba(255,255,255,0.14);
+      --text:         #ededeb;
+      --text-muted:   #888886;
+      --accent:       #5b7cf6;
+      --accent-glow:  rgba(91,124,246,0.12);
+      --green:        #00d4a0;
+      --font:         'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono:         'JetBrains Mono', 'Courier New', monospace;
+      --ease:         cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-  <link rel="stylesheet" href="../assets/css/bootstrap.css">
-  
-  <link rel="stylesheet" href="../assets/css/maicons.css">
+    html { scroll-behavior: smooth; }
 
-  <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-  <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
 
-  <link rel="stylesheet" href="../assets/vendor/fancybox/css/jquery.fancybox.css">
+    /* ── SCROLLBAR ─────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--bg-3); border-radius: 3px; }
 
-  <link rel="stylesheet" href="../assets/css/theme.css">
+    /* ── NAVIGATION ────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 56px; height: 62px;
+      background: rgba(8,9,10,0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s var(--ease);
+    }
 
+    .nav-logo {
+      font-size: 16px; font-weight: 700;
+      letter-spacing: 0.12em; color: var(--text);
+      display: flex; align-items: center; gap: 2px;
+    }
+    .nav-logo .accent { color: var(--accent); }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 40px; list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      color: var(--text) !important;
+      padding: 7px 18px;
+      border: 1px solid var(--border-light);
+      border-radius: 3px;
+      transition: border-color 0.2s, background 0.2s !important;
+    }
+    .nav-cta:hover { border-color: var(--accent) !important; background: var(--accent-glow) !important; }
+
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { display: block; width: 20px; height: 1.5px; background: var(--text); transition: all 0.3s; }
+
+    /* ── HERO ───────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 130px 56px 100px;
+      position: relative; overflow: hidden;
+    }
+
+    .hero-grid-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+
+    .hero-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 90% 55% at 50% -5%, rgba(91,124,246,0.10) 0%, transparent 68%);
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 920px; }
+
+    .hero-eyebrow {
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase;
+      display: flex; align-items: center; gap: 14px; margin-bottom: 28px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 36px; height: 1px; background: var(--accent);
+    }
+
+    .hero-title {
+      font-size: clamp(52px, 8.5vw, 100px);
+      font-weight: 700; line-height: 1.0; letter-spacing: -0.025em;
+      margin-bottom: 32px;
+    }
+    .hero-title .dim { color: var(--text-muted); }
+
+    .hero-desc {
+      font-size: 17px; color: var(--text-muted);
+      max-width: 520px; line-height: 1.8; margin-bottom: 52px;
+    }
+
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .btn-fill {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; background: var(--accent); color: #fff;
+      font-family: var(--font); font-size: 13px; font-weight: 600;
+      letter-spacing: 0.03em; border: none; border-radius: 3px;
+      cursor: pointer; transition: background 0.2s, transform 0.15s;
+    }
+    .btn-fill:hover { background: #4a6cf5; transform: translateY(-1px); }
+    .btn-fill svg { flex-shrink: 0; }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; background: transparent; color: var(--text);
+      font-family: var(--font); font-size: 13px; font-weight: 500;
+      letter-spacing: 0.03em; border: 1px solid var(--border-light);
+      border-radius: 3px; cursor: pointer; transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--text-muted); background: var(--bg-2); }
+
+    .hero-meta {
+      position: absolute; bottom: 72px; right: 56px;
+      display: flex; gap: 52px; z-index: 1;
+    }
+    .hero-meta-item { text-align: right; }
+    .hero-meta-number {
+      font-size: 40px; font-weight: 700;
+      letter-spacing: -0.03em; line-height: 1; color: var(--text);
+    }
+    .hero-meta-label {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-muted); margin-top: 6px;
+    }
+
+    /* ── DIVIDER ────────────────────────────────── */
+    .divider {
+      height: 1px; background: var(--border);
+      margin: 0 56px;
+    }
+
+    /* ── SERVICES ───────────────────────────────── */
+    .services {
+      padding: 120px 56px;
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header { margin-bottom: 72px; }
+    .section-eyebrow {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--accent);
+      display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+    }
+    .section-eyebrow::before {
+      content: ''; display: block; width: 22px; height: 1px; background: var(--accent);
+    }
+    .section-title {
+      font-size: clamp(30px, 4vw, 50px); font-weight: 700;
+      letter-spacing: -0.022em; line-height: 1.1; margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 15px; color: var(--text-muted); max-width: 520px; line-height: 1.75;
+    }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .service-card {
+      background: var(--bg-2);
+      padding: 52px;
+      display: flex; flex-direction: column; gap: 20px;
+      position: relative; overflow: hidden;
+      transition: background 0.2s var(--ease);
+    }
+    .service-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+      opacity: 0; transition: opacity 0.25s var(--ease);
+    }
+    .service-card:hover { background: var(--bg-3); }
+    .service-card:hover::after { opacity: 1; }
+
+    .service-idx {
+      font-family: var(--mono); font-size: 10px;
+      color: var(--text-muted); letter-spacing: 0.15em;
+    }
+
+    .service-icon-wrap {
+      width: 46px; height: 46px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--accent-glow);
+      border: 1px solid rgba(91,124,246,0.25);
+      border-radius: 10px; font-size: 20px;
+    }
+
+    .service-badge {
+      font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--accent);
+      background: var(--accent-glow); border: 1px solid rgba(91,124,246,0.2);
+      padding: 3px 9px; border-radius: 2px; display: inline-block;
+      margin-bottom: 6px;
+    }
+    .service-name {
+      font-size: 26px; font-weight: 700; letter-spacing: -0.015em;
+    }
+    .service-desc {
+      font-size: 14px; color: var(--text-muted);
+      line-height: 1.75; flex: 1;
+    }
+    .service-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text);
+      transition: gap 0.2s;
+    }
+    .service-link:hover { gap: 11px; }
+
+    /* ── ABOUT ──────────────────────────────────── */
+    .about {
+      padding: 120px 56px;
+      background: var(--bg);
+    }
+
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+
+    .about-body {
+      font-size: 17px; color: var(--text-muted);
+      line-height: 1.85; margin-bottom: 40px;
+    }
+    .about-body strong { color: var(--text); font-weight: 600; }
+
+    .pillars { display: flex; flex-direction: column; border: 1px solid var(--border); }
+    .pillar {
+      display: flex; align-items: flex-start; gap: 18px;
+      padding: 26px 28px; border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .pillar:last-child { border-bottom: none; }
+    .pillar:hover { background: var(--bg-2); }
+    .pillar-icon {
+      width: 34px; height: 34px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--accent-glow);
+      border-radius: 6px; font-size: 15px;
+    }
+    .pillar-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    .pillar-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── TECH STRIP ─────────────────────────────── */
+    .tech-strip {
+      padding: 56px;
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .tech-strip-inner {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 36px; flex-wrap: wrap;
+    }
+    .tech-strip-label h3 {
+      font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 6px;
+    }
+    .tech-strip-label p { font-size: 13px; color: var(--text-muted); }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tech-tag {
+      font-family: var(--mono); font-size: 11px;
+      padding: 5px 13px; border: 1px solid var(--border);
+      border-radius: 2px; color: var(--text-muted); letter-spacing: 0.04em;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .tech-tag:hover { border-color: var(--accent); color: var(--text); }
+
+    /* ── CTA ────────────────────────────────────── */
+    .cta {
+      padding: 160px 56px;
+      background: var(--bg);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 60% 70% at 50% 110%, rgba(91,124,246,0.10) 0%, transparent 70%);
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta-inner h2 {
+      font-size: clamp(34px, 5vw, 64px); font-weight: 700;
+      letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 20px;
+    }
+    .cta-inner p {
+      font-size: 17px; color: var(--text-muted); margin-bottom: 48px;
+    }
+
+    /* ── FOOTER ─────────────────────────────────── */
+    footer {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      padding: 72px 56px 40px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 64px;
+    }
+    .footer-brand-name {
+      font-size: 18px; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 14px;
+    }
+    .footer-brand-desc {
+      font-size: 13px; color: var(--text-muted); line-height: 1.7; max-width: 240px;
+    }
+    .footer-col-title {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 18px;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .footer-links a {
+      font-size: 13px; color: var(--text-muted); transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-bottom {
+      padding-top: 28px; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { font-size: 12px; color: var(--text-muted); }
+    .footer-bottom a { color: var(--accent); transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--text); }
+
+    /* ── REVEAL ANIMATION ───────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 1024px) {
+      .nav, .hero, .services, .about, .tech-strip, .cta, footer { padding-left: 36px; padding-right: 36px; }
+      .divider { margin: 0 36px; }
+      .hero-meta { right: 36px; }
+      .about-grid { gap: 48px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .hero { padding: 108px 24px 72px; }
+      .hero-meta { position: relative; bottom: auto; right: auto; margin-top: 48px; justify-content: flex-start; text-align: left; }
+      .hero-meta-item { text-align: left; }
+
+      .services { padding: 80px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { padding: 36px 28px; }
+
+      .about { padding: 80px 24px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+
+      .tech-strip { padding: 48px 24px; }
+      .tech-strip-inner { flex-direction: column; align-items: flex-start; }
+
+      .cta { padding: 100px 24px; }
+
+      footer { padding: 56px 24px 32px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+
+      .divider { margin: 0 24px; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Back to top button -->
-  <div class="back-to-top"></div>
+  <!-- ─── NAVIGATION ──────────────────────────────── -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">N<span class="accent">B</span>YTE</a>
 
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container">
-        <a href="index.html" class="navbar-brand">NBYTE</a>
+    <ul class="nav-links">
+      <li><a href="#services">서비스</a></li>
+      <li><a href="#about">소개</a></li>
+      <li><a href="https://techblog.nbyte.xyz" target="_blank">Tech Blog</a></li>
+      <li><a href="mailto:nbytecorp@gmail.com" class="nav-cta">Contact</a></li>
+    </ul>
 
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="nav-hamburger" id="hamburger" aria-label="메뉴 열기">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
 
-        <div class="navbar-collapse collapse" id="navbarContent">
-          <ul class="navbar-nav ml-auto pt-3 pt-lg-0">
-            <li class="nav-item">
-              <a href="html/about.html" class="nav-link">소개</a>
-            </li>
-            <li class="nav-item">
-              <a href="html/services.html" class="nav-link">기술과 서비스</a>
-            </li>
-            <li class="nav-item">
-              <a href="html/blog.html" class="nav-link">News</a>
-            </li>
-            <li class="nav-item">
-              <a href="html/contact.html" class="nav-link">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div> <!-- .container -->
-    </nav> <!-- .navbar -->
+  <!-- ─── HERO ─────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
 
-    <div class="page-banner home-banner mb-5">
-      <div class="slider-wrapper">
-        <div class="owl-carousel hero-carousel">
-          <div class="hero-carousel-item">
-            <img src="../assets/img/bg_image_1.jpg" alt="">
-            <div class="img-caption">
-              <div class="subhead">편리한 서비스로 더 나은 미래를 마주하세요.</div>
-              <h1 class="mb-4">NBYTE 다양한 서비스 출시</h1>
-              <a href="html/services.html" class="btn btn-outline-light">살펴보기</a>
-            </div>
-          </div>
-          <div class="hero-carousel-item">
-            <img src="../assets/img/bg_image_2.jpg" alt="">
-            <div class="img-caption">
-              <div class="subhead">열정 가득한 NBYTE 개발자들과 함께하세요. </div>
-              <h1 class="mb-4">NBYTE 기술블로그</h1>
-              <a href="https://techblog.nbyte.xyz" target="_blank" class="btn btn-outline-light">
-                방문하기
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="vertical-align: middle; margin-left: 4px;">
-                  <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z"></path>
-                  <path d="M20 21H4V5h7V3H4a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-7h-2v7z"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div> <!-- .slider-wrapper -->
-    </div> <!-- .page-banner -->
-  </header>
-
-  <main>
-    <div class="page-section">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6 py-3">
-            <div class="subhead">About Us</div>
-            <h2 class="title-section">We are <span class="fg-primary">Professional Teams</span> to Growth your Business</h2>
-
-            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of</p>
-
-            <a href="about.html" class="btn btn-primary mt-4">Read More</a>
-          </div>
-          <div class="col-lg-6 py-3">
-            <div class="about-img">
-              <img src="../assets/img/about.jpg" alt="">
-            </div>
-          </div>
-        </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">NBYTE Corporation</div>
+      <h1 class="hero-title">
+        Build the Future.<br>
+        <span class="dim">One Byte at a Time.</span>
+      </h1>
+      <p class="hero-desc">
+        우리는 복잡한 문제를 단순하고 강력한 소프트웨어로 해결합니다.<br>
+        NBYTE의 서비스는 당신의 일상과 업무를 더 스마트하게 만듭니다.
+      </p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-fill">
+          서비스 살펴보기
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://techblog.nbyte.xyz" target="_blank" class="btn-outline">
+          Tech Blog
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
       </div>
-    </div> <!-- .page-section -->
+    </div>
 
-    <div class="page-section">
-      <div class="container">
-        <div class="text-center">
-          <div class="subhead">Our Tech</div>
-          <h2 class="title-section">See what can we do for your Projects</h2>
-        </div>
-
-        <div class="row justify-content-center">
-          <div class="col-md-6 col-lg-4 col-xl-3 py-3 mb-3">
-            <div class="text-center">
-              <div class="img-fluid mb-4">
-                <img src="../assets/img/icons/web_development.svg" alt="">
-              </div>
-              <h5>Web Development</h5>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 col-xl-3 py-3 mb-3">
-            <div class="text-center">
-              <div class="img-fluid mb-4">
-                <img src="../assets/img/icons/graphics_design.svg" alt="">
-              </div>
-              <h5>Graphics Design</h5>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 col-xl-3 py-3 mb-3">
-            <div class="text-center">
-              <div class="img-fluid mb-4">
-                <img src="../assets/img/icons/seo_and_marketing.svg" alt="">
-              </div>
-              <h5>SEO & Marketing</h5>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 col-xl-3 py-3 mb-3">
-            <div class="text-center">
-              <div class="img-fluid mb-4">
-                <img src="../assets/img/icons/customer_services.svg" alt="">
-              </div>
-              <h5>Customer Services</h5>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 col-xl-3 py-3 mb-3">
-            <div class="text-center">
-              <div class="img-fluid mb-4">
-                <img src="../assets/img/icons/app_development.svg" alt="">
-              </div>
-              <h5>App Development</h5>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 col-xl-3 py-3 mb-3">
-            <div class="text-center">
-              <div class="img-fluid mb-4">
-                <img src="../assets/img/icons/ui_ux_design.svg" alt="">
-              </div>
-              <h5>UI/UX Design</h5>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 col-xl-3 py-3 mb-3">
-            <div class="text-center">
-              <div class="img-fluid mb-4">
-                <img src="../assets/img/icons/product_design.svg" alt="">
-              </div>
-              <h5>Product Design</h5>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 col-xl-3 py-3 mb-3">
-            <div class="text-center">
-              <div class="img-fluid mb-4">
-                <img src="../assets/img/icons/data_analyst.svg" alt="">
-              </div>
-              <h5>Data Analyst</h5>
-            </div>
-          </div>
-
-        </div>
-      </div> <!-- .container -->
-    </div> <!-- .page-section -->
-
-    <div class="page-section">
-      <div class="container">
-        <div class="text-center">
-          <div class="subhead">Our Teams</div>
-          <h2 class="title-section">The Expert Team on ReveTive</h2>
-        </div>
-
-        <div class="owl-carousel team-carousel mt-5">
-          <div class="team-wrap">
-            <div class="team-profile">
-              <img src="../assets/img/teams/team_1.jpg" alt="">
-            </div>
-            <div class="team-content">
-              <h5>Walter White</h5>
-              <div class="text-sm fg-grey">Chief Executive Officer</div>
-
-              <div class="social-button">
-                <a href="#"><span class="mai-logo-facebook-messenger"></span></a>
-                <a href="#"><span class="mai-call"></span></a>
-                <a href="#"><span class="mai-mail"></span></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="team-wrap">
-            <div class="team-profile">
-              <img src="../assets/img/teams/team_2.jpg" alt="">
-            </div>
-            <div class="team-content">
-              <h5>Sarah Johanson</h5>
-              <div class="text-sm fg-grey">Chief Technology Officer</div>
-
-              <div class="social-button">
-                <a href="#"><span class="mai-logo-facebook-messenger"></span></a>
-                <a href="#"><span class="mai-call"></span></a>
-                <a href="#"><span class="mai-mail"></span></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="team-wrap">
-            <div class="team-profile">
-              <img src="../assets/img/teams/team_3.jpg" alt="">
-            </div>
-            <div class="team-content">
-              <h5>Anna Anderson</h5>
-              <div class="text-sm fg-grey">Product Manager</div>
-
-              <div class="social-button">
-                <a href="#"><span class="mai-logo-facebook-messenger"></span></a>
-                <a href="#"><span class="mai-call"></span></a>
-                <a href="#"><span class="mai-mail"></span></a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div> <!-- .container -->
-    </div> <!-- .page-section -->
-
-    <div class="page-section">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6 py-3">
-            <h2 class="title-section">Our Services</h2>
-          </div>
-          <div class="col-md-6 py-3 text-md-right">
-            <a href="portfolio.html" class="btn btn-outline-primary"> 모두 살펴보기 <span class="mai-arrow-forward ml-2"></span></a>
-          </div>
-        </div>
-
-        <div class="row mt-3">
-          <div class="col-lg-4 py-3">
-            <div class="portfolio">
-              <a href="../assets/img/portfolio/work-1.jpg" data-fancybox="portfolio">
-                <img src="../assets/img/portfolio/work-1.jpg" alt="">
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-4 py-3">
-            <div class="portfolio">
-              <a href="../assets/img/portfolio/work-2.jpg" data-fancybox="portfolio">
-                <img src="../assets/img/portfolio/work-2.jpg" alt="">
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-4 py-3">
-            <div class="portfolio">
-              <a href="../assets/img/portfolio/work-3.jpg" data-fancybox="portfolio">
-                <img src="../assets/img/portfolio/work-3.jpg" alt="">
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-4 py-3">
-            <div class="portfolio">
-              <a href="../assets/img/portfolio/work-4.jpg" data-fancybox="portfolio">
-                <img src="../assets/img/portfolio/work-4.jpg" alt="">
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-4 py-3">
-            <div class="portfolio">
-              <a href="../assets/img/portfolio/work-5.jpg" data-fancybox="portfolio">
-                <img src="../assets/img/portfolio/work-5.jpg" alt="">
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-4 py-3">
-            <div class="portfolio">
-              <a href="../assets/img/portfolio/work-6.jpg" data-fancybox="portfolio">
-                <img src="../assets/img/portfolio/work-6.jpg" alt="">
-              </a>
-            </div>
-          </div>
-        </div>
-      </div> <!-- .container -->
-    </div> <!-- .page-section -->
-
-    <!-- Testimonials -->
-    <div class="page-section">
-      <div class="container">
-        <div class="owl-carousel testimonial-carousel">
-          <div class="card-testimonial">
-            <div class="content">
-              The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph
-            </div>
-            <div class="author">
-              <div class="avatar">
-                <img src="../assets/img/person/person_1.jpg" alt="">
-              </div>
-              <div class="d-inline-block ml-2">
-                <div class="author-name">Sam Watson</div>
-                <div class="author-info">CEO - Mosh Elite Ltd.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-testimonial">
-            <div class="content">
-              The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph
-            </div>
-            <div class="author">
-              <div class="avatar">
-                <img src="../assets/img/person/person_2.jpg" alt="">
-              </div>
-              <div class="d-inline-block ml-2">
-                <div class="author-name">Edinson Alfa</div>
-                <div class="author-info">CEO - Mosh Elite Ltd.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-testimonial">
-            <div class="content">
-              The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph
-            </div>
-            <div class="author">
-              <div class="avatar">
-                <img src="../assets/img/person/person_3.jpg" alt="">
-              </div>
-              <div class="d-inline-block ml-2">
-                <div class="author-name">May Halloway</div>
-                <div class="author-info">CEO - Mosh Elite Ltd.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-testimonial">
-            <div class="content">
-              The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph
-            </div>
-            <div class="author">
-              <div class="avatar">
-                <img src="../assets/img/person/person_1.jpg" alt="">
-              </div>
-              <div class="d-inline-block ml-2">
-                <div class="author-name">Sam Watson</div>
-                <div class="author-info">CEO - Mosh Elite Ltd.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-testimonial">
-            <div class="content">
-              The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph
-            </div>
-            <div class="author">
-              <div class="avatar">
-                <img src="../assets/img/person/person_2.jpg" alt="">
-              </div>
-              <div class="d-inline-block ml-2">
-                <div class="author-name">Edinson Alfa</div>
-                <div class="author-info">CEO - Mosh Elite Ltd.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-testimonial">
-            <div class="content">
-              The quick, brown fox jumps over a lazy dog. DJs flock by when MTV ax quiz prog. Junk MTV quiz graced by fox whelps. Bawds jog, flick quartz, vex nymphs. Waltz, bad nymph
-            </div>
-            <div class="author">
-              <div class="avatar">
-                <img src="../assets/img/person/person_3.jpg" alt="">
-              </div>
-              <div class="d-inline-block ml-2">
-                <div class="author-name">May Halloway</div>
-                <div class="author-info">CEO - Mosh Elite Ltd.</div>
-              </div>
-            </div>
-          </div>
-
-        </div> <!-- .row -->
-      </div> <!-- .container -->
-    </div> <!-- .page-section -->
-
-    <div class="page-section">
-      <div class="container">
-        <div class="text-center">
-          <div class="subhead">News</div>
-          <h2 class="title-section">Read Our Latest News</h2>
-        </div>
-
-        <div class="row my-5 card-blog-row">
-          <div class="col-lg-3 py-3">
-            <div class="card-blog">
-              <div class="header">
-                <div class="entry-footer">
-                  <div class="post-author">Sam Newman</div>
-                  <a href="#" class="post-date">23 Apr 2020</a>
-                </div>
-              </div>
-              <div class="body">
-                <div class="post-title"><a href="blog-single.html">What is Business Management?</a></div>
-              </div>
-              <div class="footer">
-                <a href="blog-single.html">Read More <span class="mai-chevron-forward text-sm"></span></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 py-3">
-            <div class="card-blog">
-              <div class="header">
-                <div class="avatar">
-                  <img src="../assets/img/person/person_1.jpg" alt="">
-                </div>
-                <div class="entry-footer">
-                  <div class="post-author">Sam Newman</div>
-                  <a href="#" class="post-date">23 Apr 2020</a>
-                </div>
-              </div>
-              <div class="body">
-                <div class="post-title"><a href="blog-single.html">What is Business Management?</a></div>
-                <div class="post-excerpt">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>
-              </div>
-              <div class="footer">
-                <a href="blog-single.html">Read More <span class="mai-chevron-forward text-sm"></span></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 py-3">
-            <div class="card-blog">
-              <div class="header">
-                <div class="avatar">
-                  <img src="../assets/img/person/person_2.jpg" alt="">
-                </div>
-                <div class="entry-footer">
-                  <div class="post-author">Sam Newman</div>
-                  <a href="#" class="post-date">23 Apr 2020</a>
-                </div>
-              </div>
-              <div class="body">
-                <div class="post-title"><a href="blog-single.html">What is Business Management?</a></div>
-                <div class="post-excerpt">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>
-              </div>
-              <div class="footer">
-                <a href="blog-single.html">Read More <span class="mai-chevron-forward text-sm"></span></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 py-3">
-            <div class="card-blog">
-              <div class="header">
-                <div class="avatar">
-                  <img src="../assets/img/person/person_3.jpg" alt="">
-                </div>
-                <div class="entry-footer">
-                  <div class="post-author">Sam Newman</div>
-                  <a href="#" class="post-date">23 Apr 2020</a>
-                </div>
-              </div>
-              <div class="body">
-                <div class="post-title"><a href="blog-single.html">What is Business Management?</a></div>
-                <div class="post-excerpt">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>
-              </div>
-              <div class="footer">
-                <a href="blog-single.html">Read More <span class="mai-chevron-forward text-sm"></span></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="text-center">
-          <a href="blog.html" class="btn btn-primary">View More</a>
-        </div>
-
-      </div> <!-- .container -->
-    </div> <!-- .page-section -->
-
-    <!-- <div class="page-section">
-      <div class="container">
-        <div class="text-center">
-          <h2 class="title-section mb-3">Stay in touch</h2>
-          <p>Just say hello or drop us a line. You can manualy send us email on <a href="mailto:example@mail.com">example@mail.com</a></p>
-        </div>
-        <div class="row justify-content-center mt-5">
-          <div class="col-lg-8">
-            <form action="#" class="form-contact">
-              <div class="row">
-                <div class="col-sm-6 py-2">
-                  <label for="name" class="fg-grey">Name</label>
-                  <input type="text" class="form-control" id="name" placeholder="Enter name..">
-                </div>
-                <div class="col-sm-6 py-2">
-                  <label for="email" class="fg-grey">Email</label>
-                  <input type="text" class="form-control" id="email" placeholder="Email address..">
-                </div>
-                <div class="col-12 py-2">
-                  <label for="subject" class="fg-grey">Subject</label>
-                  <input type="text" class="form-control" id="subject" placeholder="Subject..">
-                </div>
-                <div class="col-12 py-2">
-                  <label for="message" class="fg-grey">Message</label>
-                  <textarea id="message" rows="8" class="form-control" placeholder="Enter message.."></textarea>
-                </div>
-                <div class="col-12 mt-3">
-                  <button type="submit" class="btn btn-primary px-5">Submit</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="hero-meta-number">4</div>
+        <div class="hero-meta-label">Services</div>
       </div>
-    </div> -->
-
-    <!-- <div class="page-section">
-      <div class="container-fluid">
-        <div class="row row-cols-md-3 row-cols-lg-5 justify-content-center text-center">
-          <div class="py-3 px-5">
-            <img src="../assets/img/clients/airbnb.png" alt="">
-          </div>
-          <div class="py-3 px-5">
-            <img src="../assets/img/clients/google.png" alt="">
-          </div>
-          <div class="py-3 px-5">
-            <img src="../assets/img/clients/mailchimp.png" alt="">
-          </div>
-          <div class="py-3 px-5">
-            <img src="../assets/img/clients/paypal.png" alt="">
-          </div>
-          <div class="py-3 px-5">
-            <img src="../assets/img/clients/stripe.png" alt="">
-          </div>
-        </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-number">∞</div>
+        <div class="hero-meta-label">Possibilities</div>
       </div>
-    </div>  -->
+    </div>
+  </section>
 
-  </main>
+  <!-- ─── SERVICES ─────────────────────────────────── -->
+  <section class="services" id="services">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Our Products</div>
+      <h2 class="section-title">NBYTE가 만든 서비스</h2>
+      <p class="section-sub">개발자의 시각으로, 사용자의 입장에서. 실제로 쓸 수 있는 서비스를 만듭니다.</p>
+    </div>
 
-  <footer class="page-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 py-3">
-          <h3>NBYTE</h3>
+    <div class="services-grid reveal">
+
+      <!-- 01 · Nemo -->
+      <div class="service-card">
+        <div class="service-idx">01</div>
+        <div class="service-icon-wrap">🧠</div>
+        <div>
+          <div class="service-badge">Workspace</div>
+          <div class="service-name">Nemo</div>
         </div>
-        <div class="col-lg-3 py-3">
-          <h5>Contact Information</h5>
-          <p>이메일 : nbytecorp@gmail.com</p>
-        </div>
-        <div class="col-lg-3 py-3">
-          <h5>Company</h5>
-          <ul class="footer-menu">
-            <li><a href="#">Career</a></li>
-            <li><a href="#">Resources</a></li>
-            <li><a href="#">News & Feed</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3 py-3">
-          <h5>Newsletter</h5>
-          <form action="#">
-            <input type="text" class="form-control" placeholder="Enter your email">
-            <button type="submit" class="btn btn-primary btn-sm mt-2">Submit</button>
-          </form>
-        </div>
+        <p class="service-desc">
+          팀과 개인의 작업을 하나의 공간에서. Nemo는 스마트한 워크스페이스 환경을 제공하여
+          프로젝트 관리와 협업, 생산성을 한 단계 높여줍니다. 복잡한 워크플로우도 Nemo와 함께라면 명확해집니다.
+        </p>
+        <a href="https://nemo.nbyte.xyz" target="_blank" class="service-link">
+          Launch App
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
 
-      <hr>
-
-      <div class="row mt-4">
-        <div class="col-md-6">
-          <p>Copyright 2020. This template designed by <a href="https://macodeid.com">MACode ID</a></p>
+      <!-- 02 · LinkHub -->
+      <div class="service-card">
+        <div class="service-idx">02</div>
+        <div class="service-icon-wrap">🔗</div>
+        <div>
+          <div class="service-badge">Bookmark Manager</div>
+          <div class="service-name">LinkHub</div>
         </div>
-        <div class="col-md-6 text-right">
-          <div class="sosmed-button">
-            <a href="#"><span class="mai-logo-facebook-f"></span></a>
-            <a href="#"><span class="mai-logo-twitter"></span></a>
-            <a href="#"><span class="mai-logo-youtube"></span></a>
-            <a href="#"><span class="mai-logo-linkedin"></span></a>
+        <p class="service-desc">
+          흩어진 링크를 하나로. LinkHub는 강력한 북마크 매니저로, 웹에서 발견한 모든 것을 체계적으로
+          저장하고 관리합니다. 태그, 컬렉션, 스마트 검색으로 필요한 링크를 언제나 즉시 찾을 수 있습니다.
+        </p>
+        <a href="https://linkhub.nbyte.xyz" target="_blank" class="service-link">
+          Launch App
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- 03 · LOTTERYN -->
+      <div class="service-card">
+        <div class="service-idx">03</div>
+        <div class="service-icon-wrap">🎯</div>
+        <div>
+          <div class="service-badge">Lottery</div>
+          <div class="service-name">LOTTERYN</div>
+        </div>
+        <p class="service-desc">
+          당신의 행운을 데이터로. LOTTERYN은 로또 번호 통계 분석, 추첨 시뮬레이션, 당첨 이력 관리를
+          제공하는 스마트 로또 서비스입니다. 행운도 전략이 될 수 있습니다.
+        </p>
+        <a href="https://lotteryn.nbyte.xyz" target="_blank" class="service-link">
+          Launch App
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- 04 · CodeWell -->
+      <div class="service-card">
+        <div class="service-idx">04</div>
+        <div class="service-icon-wrap">⚙️</div>
+        <div>
+          <div class="service-badge">DevTool</div>
+          <div class="service-name">CodeWell</div>
+        </div>
+        <p class="service-desc">
+          개발자를 위한 개발자의 도구. CodeWell은 코드 포맷팅, 변환, 테스트, 유틸리티 등
+          개발 과정에서 반복적으로 필요한 작업들을 브라우저에서 즉시 처리할 수 있는 올인원 DevTool 플랫폼입니다.
+        </p>
+        <a href="https://codewell.nbyte.xyz" target="_blank" class="service-link">
+          Launch App
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ─────────────────────────────────────── -->
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="section-eyebrow">About NBYTE</div>
+        <h2 class="section-title">문제를 해결하는<br>소프트웨어를 만듭니다.</h2>
+        <p class="about-body">
+          NBYTE는 <strong>실제로 필요한 것</strong>을 만드는 팀입니다.
+          화려한 기술보다 실질적인 가치를, 복잡한 기능보다 명확한 경험을 추구합니다.
+          우리가 만드는 모든 서비스는 사용자의 삶에 진짜 도움이 되어야 한다는 믿음에서 출발합니다.
+        </p>
+        <a href="mailto:nbytecorp@gmail.com" class="btn-outline">
+          팀에 합류하기
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="pillars reveal">
+        <div class="pillar">
+          <div class="pillar-icon">🎯</div>
+          <div>
+            <div class="pillar-title">Problem-First Approach</div>
+            <div class="pillar-desc">기술이 아닌 문제에서 시작합니다. 진짜 필요에서 출발한 제품을 만듭니다.</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">⚡</div>
+          <div>
+            <div class="pillar-title">Speed &amp; Simplicity</div>
+            <div class="pillar-desc">빠르고 단순한 경험. 불필요한 복잡함 없이 핵심에 집중합니다.</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🔒</div>
+          <div>
+            <div class="pillar-title">Reliability</div>
+            <div class="pillar-desc">신뢰할 수 있는 소프트웨어. 언제 어디서나 안정적으로 작동합니다.</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🌱</div>
+          <div>
+            <div class="pillar-title">Continuous Growth</div>
+            <div class="pillar-desc">사용자 피드백과 함께 끊임없이 개선하고 성장합니다.</div>
           </div>
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- ─── TECH STRIP ────────────────────────────────── -->
+  <div class="tech-strip reveal">
+    <div class="tech-strip-inner">
+      <div class="tech-strip-label">
+        <h3>Built with modern technology</h3>
+        <p>최신 기술 스택으로 만들어진 안정적인 서비스들</p>
+      </div>
+      <div class="tech-tags">
+        <span class="tech-tag">TypeScript</span>
+        <span class="tech-tag">React</span>
+        <span class="tech-tag">Next.js</span>
+        <span class="tech-tag">Node.js</span>
+        <span class="tech-tag">PostgreSQL</span>
+        <span class="tech-tag">Docker</span>
+        <span class="tech-tag">Kubernetes</span>
+        <span class="tech-tag">AWS</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── CTA ──────────────────────────────────────── -->
+  <section class="cta">
+    <div class="cta-inner reveal">
+      <h2>함께 만들어가고<br>싶으신가요?</h2>
+      <p>NBYTE의 서비스를 사용하거나 팀에 합류하고 싶다면 연락해주세요.</p>
+      <a href="mailto:nbytecorp@gmail.com" class="btn-fill">
+        Get in Touch
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────── -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">NBYTE</div>
+        <p class="footer-brand-desc">복잡한 문제를 단순하고 강력한 소프트웨어로 해결합니다. 우리는 계속 만들어갑니다.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="https://nemo.nbyte.xyz" target="_blank">Nemo</a></li>
+          <li><a href="https://linkhub.nbyte.xyz" target="_blank">LinkHub</a></li>
+          <li><a href="https://lotteryn.nbyte.xyz" target="_blank">LOTTERYN</a></li>
+          <li><a href="https://codewell.nbyte.xyz" target="_blank">CodeWell</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#about">소개</a></li>
+          <li><a href="https://techblog.nbyte.xyz" target="_blank">Tech Blog</a></li>
+          <li><a href="mailto:nbytecorp@gmail.com">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:nbytecorp@gmail.com">nbytecorp@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 NBYTE Corporation. All rights reserved.</p>
+      <p>Made with passion by <a href="#about">NBYTE Team</a></p>
+    </div>
   </footer>
 
-  
-<script src="../assets/js/jquery-3.5.1.min.js"></script>
+  <script>
+    // ── Scroll Reveal ──────────────────────────────
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+      { threshold: 0.08 }
+    );
+    revealEls.forEach(el => revealObserver.observe(el));
 
-<script src="../assets/js/bootstrap.bundle.min.js"></script>
+    // ── Smooth Scroll ──────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
 
-<script src="../assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
-
-<script src="../assets/vendor/wow/wow.min.js"></script>
-
-<script src="../assets/vendor/fancybox/js/jquery.fancybox.min.js"></script>
-
-<script src="../assets/vendor/isotope/isotope.pkgd.min.js"></script>
-
-<script src="../assets/js/google-maps.js"></script>
-
-<script src="../assets/js/theme.js"></script>
-
-<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIA_zqjFMsJM_sxP9-6Pde5vVCTyJmUHM&callback=initMap"></script> -->
-
+    // ── Nav scroll tint ────────────────────────────
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      nav.style.background = window.scrollY > 40
+        ? 'rgba(8,9,10,0.96)'
+        : 'rgba(8,9,10,0.82)';
+    }, { passive: true });
+  </script>
 </body>
 </html>
