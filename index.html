@@ -6,6 +6,8 @@
   <meta name="description" content="NBYTE — 복잡한 문제를 단순하고 강력한 소프트웨어로 해결합니다.">
   <title>NBYTE — Build the Future.</title>
 
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -14,27 +16,29 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:           #08090a;
-      --bg-2:         #0e1012;
-      --bg-3:         #14171a;
-      --border:       rgba(255,255,255,0.07);
-      --border-light: rgba(255,255,255,0.14);
-      --text:         #ededeb;
-      --text-muted:   #888886;
-      --accent:       #5b7cf6;
-      --accent-glow:  rgba(91,124,246,0.12);
-      --green:        #00d4a0;
-      --font:         'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-      --mono:         'JetBrains Mono', 'Courier New', monospace;
-      --ease:         cubic-bezier(0.4, 0, 0.2, 1);
+      --black:       #000000;
+      --black-soft:  #0a0a0a;
+      --black-card:  #111111;
+      --black-hover: #161616;
+      --white:       #ffffff;
+      --white-off:   #f5f5f3;
+      --grey-1:      #999999;
+      --grey-2:      #555555;
+      --grey-3:      #2a2a2a;
+      --border:      rgba(255,255,255,0.08);
+      --border-mid:  rgba(255,255,255,0.14);
+      --border-hi:   rgba(255,255,255,0.28);
+      --font:        'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono:        'JetBrains Mono', 'Courier New', monospace;
+      --ease:        cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
       font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
+      background: var(--black);
+      color: var(--white-off);
       line-height: 1.6;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
@@ -42,164 +46,170 @@
     }
 
     a { text-decoration: none; color: inherit; }
-    img { display: block; max-width: 100%; }
 
-    /* ── SCROLLBAR ─────────────────────────────── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--bg-3); border-radius: 3px; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--grey-3); border-radius: 3px; }
 
-    /* ── NAVIGATION ────────────────────────────── */
+    /* ── NAV ─────────────────────────────────────── */
     .nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 60px;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 56px; height: 62px;
-      background: rgba(8,9,10,0.82);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      padding: 0 56px;
+      background: rgba(0,0,0,0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
       transition: background 0.3s var(--ease);
     }
 
     .nav-logo {
-      font-size: 16px; font-weight: 700;
-      letter-spacing: 0.12em; color: var(--text);
-      display: flex; align-items: center; gap: 2px;
+      font-size: 15px; font-weight: 700;
+      letter-spacing: 0.15em; color: var(--white);
+      display: flex; align-items: center;
     }
-    .nav-logo .accent { color: var(--accent); }
 
     .nav-links {
-      display: flex; align-items: center; gap: 40px; list-style: none;
+      display: flex; align-items: center; gap: 38px; list-style: none;
     }
     .nav-links a {
-      font-size: 12px; font-weight: 500;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--text-muted);
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--grey-1);
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover { color: var(--white); }
 
-    .nav-cta {
-      color: var(--text) !important;
-      padding: 7px 18px;
-      border: 1px solid var(--border-light);
-      border-radius: 3px;
+    .nav-contact {
+      color: var(--white) !important;
+      border: 1px solid var(--border-mid) !important;
+      padding: 6px 16px; border-radius: 2px;
       transition: border-color 0.2s, background 0.2s !important;
     }
-    .nav-cta:hover { border-color: var(--accent) !important; background: var(--accent-glow) !important; }
+    .nav-contact:hover {
+      border-color: var(--white) !important;
+      background: rgba(255,255,255,0.06) !important;
+    }
 
-    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-    .nav-hamburger span { display: block; width: 20px; height: 1.5px; background: var(--text); transition: all 0.3s; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .nav-hamburger span { display: block; width: 20px; height: 1.5px; background: var(--white); }
 
-    /* ── HERO ───────────────────────────────────── */
+    /* ── HERO ─────────────────────────────────────── */
     .hero {
       min-height: 100vh;
       display: flex; flex-direction: column; justify-content: center;
-      padding: 130px 56px 100px;
+      padding: 130px 56px 96px;
       position: relative; overflow: hidden;
     }
 
-    .hero-grid-bg {
+    /* subtle grid */
+    .hero-bg {
       position: absolute; inset: 0; pointer-events: none;
       background-image:
-        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
-      background-size: 64px 64px;
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 72px 72px;
     }
-
-    .hero-glow {
+    /* top fade */
+    .hero-fade {
       position: absolute; inset: 0; pointer-events: none;
-      background: radial-gradient(ellipse 90% 55% at 50% -5%, rgba(91,124,246,0.10) 0%, transparent 68%);
+      background: radial-gradient(ellipse 100% 50% at 50% -10%, rgba(255,255,255,0.04) 0%, transparent 70%);
     }
 
-    .hero-content { position: relative; z-index: 1; max-width: 920px; }
+    .hero-content { position: relative; z-index: 1; max-width: 960px; }
 
-    .hero-eyebrow {
-      font-family: var(--mono); font-size: 11px;
-      letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase;
-      display: flex; align-items: center; gap: 14px; margin-bottom: 28px;
-    }
-    .hero-eyebrow::before {
-      content: ''; display: block; width: 36px; height: 1px; background: var(--accent);
-    }
-
-    .hero-title {
-      font-size: clamp(52px, 8.5vw, 100px);
-      font-weight: 700; line-height: 1.0; letter-spacing: -0.025em;
+    .hero-label {
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: 0.25em; color: var(--grey-1);
+      text-transform: uppercase;
+      display: flex; align-items: center; gap: 14px;
       margin-bottom: 32px;
     }
-    .hero-title .dim { color: var(--text-muted); }
+    .hero-label::before {
+      content: ''; display: block; width: 32px; height: 1px; background: var(--grey-2);
+    }
+
+    h1.hero-title {
+      font-size: clamp(52px, 9vw, 108px);
+      font-weight: 700; line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 36px;
+    }
+    h1.hero-title .dim { color: var(--grey-2); }
 
     .hero-desc {
-      font-size: 17px; color: var(--text-muted);
-      max-width: 520px; line-height: 1.8; margin-bottom: 52px;
+      font-size: 16px; color: var(--grey-1);
+      max-width: 500px; line-height: 1.85;
+      margin-bottom: 52px;
     }
 
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 
-    .btn-fill {
+    .btn-white {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 28px; background: var(--accent); color: #fff;
+      padding: 12px 26px;
+      background: var(--white); color: var(--black);
       font-family: var(--font); font-size: 13px; font-weight: 600;
-      letter-spacing: 0.03em; border: none; border-radius: 3px;
+      letter-spacing: 0.02em; border: none; border-radius: 2px;
       cursor: pointer; transition: background 0.2s, transform 0.15s;
     }
-    .btn-fill:hover { background: #4a6cf5; transform: translateY(-1px); }
-    .btn-fill svg { flex-shrink: 0; }
+    .btn-white:hover { background: var(--white-off); transform: translateY(-1px); }
 
-    .btn-outline {
+    .btn-ghost {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 28px; background: transparent; color: var(--text);
+      padding: 12px 26px;
+      background: transparent; color: var(--white-off);
       font-family: var(--font); font-size: 13px; font-weight: 500;
-      letter-spacing: 0.03em; border: 1px solid var(--border-light);
-      border-radius: 3px; cursor: pointer; transition: border-color 0.2s, background 0.2s;
+      letter-spacing: 0.02em; border: 1px solid var(--border-mid);
+      border-radius: 2px; cursor: pointer; transition: border-color 0.2s, background 0.2s;
     }
-    .btn-outline:hover { border-color: var(--text-muted); background: var(--bg-2); }
+    .btn-ghost:hover { border-color: var(--grey-1); background: var(--black-card); }
 
-    .hero-meta {
-      position: absolute; bottom: 72px; right: 56px;
-      display: flex; gap: 52px; z-index: 1;
+    .hero-stats {
+      position: absolute; bottom: 72px; right: 56px; z-index: 1;
+      display: flex; gap: 48px;
     }
-    .hero-meta-item { text-align: right; }
-    .hero-meta-number {
-      font-size: 40px; font-weight: 700;
-      letter-spacing: -0.03em; line-height: 1; color: var(--text);
+    .stat { text-align: right; }
+    .stat-num {
+      font-size: 44px; font-weight: 700;
+      letter-spacing: -0.04em; line-height: 1; color: var(--white);
     }
-    .hero-meta-label {
-      font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--text-muted); margin-top: 6px;
-    }
-
-    /* ── DIVIDER ────────────────────────────────── */
-    .divider {
-      height: 1px; background: var(--border);
-      margin: 0 56px;
+    .stat-label {
+      font-family: var(--mono); font-size: 9px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--grey-2); margin-top: 6px;
     }
 
-    /* ── SERVICES ───────────────────────────────── */
+    /* ── SECTION BASE ─────────────────────────────── */
+    .eyebrow {
+      font-family: var(--mono); font-size: 10px;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--grey-1);
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 18px;
+    }
+    .eyebrow::before {
+      content: ''; display: block; width: 22px; height: 1px; background: var(--grey-2);
+    }
+    .sec-title {
+      font-size: clamp(28px, 3.8vw, 48px); font-weight: 700;
+      letter-spacing: -0.022em; line-height: 1.1; margin-bottom: 14px;
+    }
+    .sec-sub {
+      font-size: 15px; color: var(--grey-1);
+      max-width: 500px; line-height: 1.8;
+    }
+
+    /* ── SERVICES ─────────────────────────────────── */
     .services {
       padding: 120px 56px;
-      background: var(--bg-2);
+      background: var(--black-soft);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
 
-    .section-header { margin-bottom: 72px; }
-    .section-eyebrow {
-      font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--accent);
-      display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
-    }
-    .section-eyebrow::before {
-      content: ''; display: block; width: 22px; height: 1px; background: var(--accent);
-    }
-    .section-title {
-      font-size: clamp(30px, 4vw, 50px); font-weight: 700;
-      letter-spacing: -0.022em; line-height: 1.1; margin-bottom: 16px;
-    }
-    .section-sub {
-      font-size: 15px; color: var(--text-muted); max-width: 520px; line-height: 1.75;
-    }
+    .sec-header { margin-bottom: 64px; }
 
     .services-grid {
       display: grid; grid-template-columns: repeat(2, 1fr);
@@ -207,61 +217,71 @@
       border: 1px solid var(--border);
     }
 
-    .service-card {
-      background: var(--bg-2);
-      padding: 52px;
-      display: flex; flex-direction: column; gap: 20px;
+    .svc-card {
+      background: var(--black-soft);
+      padding: 52px 52px 44px;
+      display: flex; flex-direction: column; gap: 0;
       position: relative; overflow: hidden;
-      transition: background 0.2s var(--ease);
+      transition: background 0.25s var(--ease);
     }
-    .service-card::after {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
-      opacity: 0; transition: opacity 0.25s var(--ease);
+    .svc-card::after {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: var(--white);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.35s var(--ease);
     }
-    .service-card:hover { background: var(--bg-3); }
-    .service-card:hover::after { opacity: 1; }
+    .svc-card:hover { background: var(--black-hover); }
+    .svc-card:hover::after { transform: scaleX(1); }
 
-    .service-idx {
+    .svc-idx {
       font-family: var(--mono); font-size: 10px;
-      color: var(--text-muted); letter-spacing: 0.15em;
+      color: var(--grey-2); letter-spacing: 0.15em;
+      margin-bottom: 28px;
     }
 
-    .service-icon-wrap {
-      width: 46px; height: 46px;
+    /* logo image area */
+    .svc-logo {
+      width: 64px; height: 64px;
       display: flex; align-items: center; justify-content: center;
-      background: var(--accent-glow);
-      border: 1px solid rgba(91,124,246,0.25);
-      border-radius: 10px; font-size: 20px;
+      margin-bottom: 28px;
+      flex-shrink: 0;
+    }
+    .svc-logo img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      border-radius: 14px;
     }
 
-    .service-badge {
-      font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--accent);
-      background: var(--accent-glow); border: 1px solid rgba(91,124,246,0.2);
-      padding: 3px 9px; border-radius: 2px; display: inline-block;
-      margin-bottom: 6px;
+    .svc-tag {
+      font-family: var(--mono); font-size: 9px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--grey-2);
+      border: 1px solid var(--border-mid);
+      padding: 3px 8px; border-radius: 1px;
+      display: inline-block; margin-bottom: 16px;
     }
-    .service-name {
-      font-size: 26px; font-weight: 700; letter-spacing: -0.015em;
+
+    .svc-desc {
+      font-size: 14px; color: var(--grey-1);
+      line-height: 1.8; flex: 1;
+      margin-bottom: 36px;
     }
-    .service-desc {
-      font-size: 14px; color: var(--text-muted);
-      line-height: 1.75; flex: 1;
-    }
-    .service-link {
+
+    .svc-link {
       display: inline-flex; align-items: center; gap: 7px;
-      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--text);
-      transition: gap 0.2s;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--white);
+      border-bottom: 1px solid var(--border-mid);
+      padding-bottom: 2px;
+      transition: border-color 0.2s, gap 0.2s;
     }
-    .service-link:hover { gap: 11px; }
+    .svc-link:hover { border-color: var(--white); gap: 11px; }
 
-    /* ── ABOUT ──────────────────────────────────── */
+    /* ── ABOUT ────────────────────────────────────── */
     .about {
       padding: 120px 56px;
-      background: var(--bg);
+      background: var(--black);
     }
 
     .about-grid {
@@ -270,32 +290,32 @@
     }
 
     .about-body {
-      font-size: 17px; color: var(--text-muted);
-      line-height: 1.85; margin-bottom: 40px;
+      font-size: 16px; color: var(--grey-1);
+      line-height: 1.9; margin-bottom: 40px;
     }
-    .about-body strong { color: var(--text); font-weight: 600; }
+    .about-body strong { color: var(--white-off); font-weight: 600; }
 
-    .pillars { display: flex; flex-direction: column; border: 1px solid var(--border); }
+    .pillars { border: 1px solid var(--border); }
     .pillar {
-      display: flex; align-items: flex-start; gap: 18px;
-      padding: 26px 28px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-start; gap: 20px;
+      padding: 24px 28px; border-bottom: 1px solid var(--border);
       transition: background 0.2s;
     }
     .pillar:last-child { border-bottom: none; }
-    .pillar:hover { background: var(--bg-2); }
-    .pillar-icon {
-      width: 34px; height: 34px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      background: var(--accent-glow);
-      border-radius: 6px; font-size: 15px;
-    }
-    .pillar-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
-    .pillar-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    .pillar:hover { background: var(--black-card); }
 
-    /* ── TECH STRIP ─────────────────────────────── */
+    .pillar-num {
+      font-family: var(--mono); font-size: 10px;
+      color: var(--grey-2); letter-spacing: 0.1em;
+      margin-top: 3px; flex-shrink: 0; width: 24px;
+    }
+    .pillar-title { font-size: 14px; font-weight: 600; color: var(--white-off); margin-bottom: 4px; }
+    .pillar-desc { font-size: 13px; color: var(--grey-1); line-height: 1.65; }
+
+    /* ── TECH STRIP ───────────────────────────────── */
     .tech-strip {
-      padding: 56px;
-      background: var(--bg-2);
+      padding: 52px 56px;
+      background: var(--black-soft);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
@@ -304,28 +324,28 @@
       justify-content: space-between; gap: 36px; flex-wrap: wrap;
     }
     .tech-strip-label h3 {
-      font-size: 22px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 6px;
+      font-size: 20px; font-weight: 700;
+      letter-spacing: -0.01em; margin-bottom: 6px;
     }
-    .tech-strip-label p { font-size: 13px; color: var(--text-muted); }
-    .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tech-strip-label p { font-size: 13px; color: var(--grey-1); }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 7px; }
     .tech-tag {
       font-family: var(--mono); font-size: 11px;
-      padding: 5px 13px; border: 1px solid var(--border);
-      border-radius: 2px; color: var(--text-muted); letter-spacing: 0.04em;
+      padding: 5px 12px; border: 1px solid var(--border);
+      border-radius: 1px; color: var(--grey-1); letter-spacing: 0.04em;
       transition: border-color 0.2s, color 0.2s;
     }
-    .tech-tag:hover { border-color: var(--accent); color: var(--text); }
+    .tech-tag:hover { border-color: var(--border-hi); color: var(--white); }
 
-    /* ── CTA ────────────────────────────────────── */
+    /* ── CTA ──────────────────────────────────────── */
     .cta {
       padding: 160px 56px;
-      background: var(--bg);
+      background: var(--black);
       text-align: center; position: relative; overflow: hidden;
     }
     .cta::before {
-      content: '';
-      position: absolute; inset: 0; pointer-events: none;
-      background: radial-gradient(ellipse 60% 70% at 50% 110%, rgba(91,124,246,0.10) 0%, transparent 70%);
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse 60% 60% at 50% 120%, rgba(255,255,255,0.03) 0%, transparent 70%);
     }
     .cta-inner { position: relative; z-index: 1; }
     .cta-inner h2 {
@@ -333,12 +353,12 @@
       letter-spacing: -0.025em; line-height: 1.1; margin-bottom: 20px;
     }
     .cta-inner p {
-      font-size: 17px; color: var(--text-muted); margin-bottom: 48px;
+      font-size: 16px; color: var(--grey-1); margin-bottom: 48px;
     }
 
-    /* ── FOOTER ─────────────────────────────────── */
+    /* ── FOOTER ───────────────────────────────────── */
     footer {
-      background: var(--bg-2);
+      background: var(--black-soft);
       border-top: 1px solid var(--border);
       padding: 72px 56px 40px;
     }
@@ -346,42 +366,39 @@
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 48px; margin-bottom: 64px;
     }
-    .footer-brand-name {
-      font-size: 18px; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 14px;
-    }
-    .footer-brand-desc {
-      font-size: 13px; color: var(--text-muted); line-height: 1.7; max-width: 240px;
-    }
+    .footer-logo { font-size: 16px; font-weight: 700; letter-spacing: 0.12em; margin-bottom: 14px; }
+    .footer-tagline { font-size: 13px; color: var(--grey-1); line-height: 1.7; max-width: 240px; }
     .footer-col-title {
-      font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--text-muted); margin-bottom: 18px;
+      font-family: var(--mono); font-size: 9px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--grey-2); margin-bottom: 18px;
     }
     .footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-    .footer-links a {
-      font-size: 13px; color: var(--text-muted); transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--text); }
-
+    .footer-links a { font-size: 13px; color: var(--grey-1); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
     .footer-bottom {
       padding-top: 28px; border-top: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
     }
-    .footer-bottom p { font-size: 12px; color: var(--text-muted); }
-    .footer-bottom a { color: var(--accent); transition: color 0.2s; }
-    .footer-bottom a:hover { color: var(--text); }
+    .footer-bottom p { font-size: 12px; color: var(--grey-2); }
+    .footer-bottom a { color: var(--grey-1); transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--white); }
 
-    /* ── REVEAL ANIMATION ───────────────────────── */
+    /* ── REVEAL ───────────────────────────────────── */
     .reveal {
-      opacity: 0; transform: translateY(20px);
-      transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
     }
     .reveal.in { opacity: 1; transform: none; }
+    .reveal-delay { transition-delay: 0.12s; }
 
-    /* ── RESPONSIVE ─────────────────────────────── */
+    /* ── RESPONSIVE ───────────────────────────────── */
     @media (max-width: 1024px) {
-      .nav, .hero, .services, .about, .tech-strip, .cta, footer { padding-left: 36px; padding-right: 36px; }
-      .divider { margin: 0 36px; }
-      .hero-meta { right: 36px; }
+      .nav, .hero, .services, .about, .tech-strip, .cta, footer {
+        padding-left: 36px; padding-right: 36px;
+      }
+      .hero-stats { right: 36px; }
       .about-grid { gap: 48px; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -391,13 +408,16 @@
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
 
-      .hero { padding: 108px 24px 72px; }
-      .hero-meta { position: relative; bottom: auto; right: auto; margin-top: 48px; justify-content: flex-start; text-align: left; }
-      .hero-meta-item { text-align: left; }
+      .hero { padding: 108px 24px 80px; }
+      .hero-stats {
+        position: relative; bottom: auto; right: auto;
+        margin-top: 52px; justify-content: flex-start;
+      }
+      .stat { text-align: left; }
 
       .services { padding: 80px 24px; }
       .services-grid { grid-template-columns: 1fr; }
-      .service-card { padding: 36px 28px; }
+      .svc-card { padding: 36px 28px 32px; }
 
       .about { padding: 80px 24px; }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -408,196 +428,191 @@
       .cta { padding: 100px 24px; }
 
       footer { padding: 56px 24px 32px; }
-      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
-
-      .divider { margin: 0 24px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ─── NAVIGATION ──────────────────────────────── -->
-  <nav class="nav">
-    <a href="index.html" class="nav-logo">N<span class="accent">B</span>YTE</a>
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav-logo">NBYTE</a>
 
     <ul class="nav-links">
       <li><a href="#services">서비스</a></li>
       <li><a href="#about">소개</a></li>
       <li><a href="https://techblog.nbyte.xyz" target="_blank">Tech Blog</a></li>
-      <li><a href="mailto:nbytecorp@gmail.com" class="nav-cta">Contact</a></li>
+      <li><a href="mailto:nbytecontact@gmail.com" class="nav-contact">Contact</a></li>
     </ul>
 
-    <div class="nav-hamburger" id="hamburger" aria-label="메뉴 열기">
+    <div class="nav-hamburger" id="hamburger">
       <span></span><span></span><span></span>
     </div>
   </nav>
 
-  <!-- ─── HERO ─────────────────────────────────────── -->
+  <!-- HERO -->
   <section class="hero">
-    <div class="hero-grid-bg"></div>
-    <div class="hero-glow"></div>
+    <div class="hero-bg"></div>
+    <div class="hero-fade"></div>
 
     <div class="hero-content">
-      <div class="hero-eyebrow">NBYTE Corporation</div>
+      <div class="hero-label">NBYTE Corporation</div>
       <h1 class="hero-title">
-        Build the Future.<br>
-        <span class="dim">One Byte at a Time.</span>
+        Build the<br>Future.<br>
+        <span class="dim">One Byte at<br>a Time.</span>
       </h1>
       <p class="hero-desc">
-        우리는 복잡한 문제를 단순하고 강력한 소프트웨어로 해결합니다.<br>
+        우리는 복잡한 문제를 단순하고 강력한 소프트웨어로 해결합니다.
         NBYTE의 서비스는 당신의 일상과 업무를 더 스마트하게 만듭니다.
       </p>
-      <div class="hero-actions">
-        <a href="#services" class="btn-fill">
+      <div class="hero-btns">
+        <a href="#services" class="btn-white">
           서비스 살펴보기
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="https://techblog.nbyte.xyz" target="_blank" class="btn-outline">
+        <a href="https://techblog.nbyte.xyz" target="_blank" class="btn-ghost">
           Tech Blog
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         </a>
       </div>
     </div>
 
-    <div class="hero-meta">
-      <div class="hero-meta-item">
-        <div class="hero-meta-number">4</div>
-        <div class="hero-meta-label">Services</div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Services</div>
       </div>
-      <div class="hero-meta-item">
-        <div class="hero-meta-number">∞</div>
-        <div class="hero-meta-label">Possibilities</div>
+      <div class="stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Possibilities</div>
       </div>
     </div>
   </section>
 
-  <!-- ─── SERVICES ─────────────────────────────────── -->
+  <!-- SERVICES -->
   <section class="services" id="services">
-    <div class="section-header reveal">
-      <div class="section-eyebrow">Our Products</div>
-      <h2 class="section-title">NBYTE가 만든 서비스</h2>
-      <p class="section-sub">개발자의 시각으로, 사용자의 입장에서. 실제로 쓸 수 있는 서비스를 만듭니다.</p>
+    <div class="sec-header reveal">
+      <div class="eyebrow">Our Products</div>
+      <h2 class="sec-title">NBYTE가 만든 서비스</h2>
+      <p class="sec-sub">개발자의 시각으로, 사용자의 입장에서.<br>실제로 쓸 수 있는 서비스를 만듭니다.</p>
     </div>
 
-    <div class="services-grid reveal">
+    <div class="services-grid reveal reveal-delay">
 
       <!-- 01 · Nemo -->
-      <div class="service-card">
-        <div class="service-idx">01</div>
-        <div class="service-icon-wrap">🧠</div>
-        <div>
-          <div class="service-badge">Workspace</div>
-          <div class="service-name">Nemo</div>
+      <div class="svc-card">
+        <div class="svc-idx">01</div>
+        <!-- replace src with actual logo once downloaded -->
+        <div class="svc-logo">
+          <img src="assets/img/logos/nemo.svg" alt="Nemo">
         </div>
-        <p class="service-desc">
+        <div class="svc-tag">Workspace</div>
+        <p class="svc-desc">
           팀과 개인의 작업을 하나의 공간에서. Nemo는 스마트한 워크스페이스 환경을 제공하여
           프로젝트 관리와 협업, 생산성을 한 단계 높여줍니다. 복잡한 워크플로우도 Nemo와 함께라면 명확해집니다.
         </p>
-        <a href="https://nemo.nbyte.xyz" target="_blank" class="service-link">
+        <a href="https://nemo.nbyte.xyz" target="_blank" class="svc-link">
           Launch App
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
 
       <!-- 02 · LinkHub -->
-      <div class="service-card">
-        <div class="service-idx">02</div>
-        <div class="service-icon-wrap">🔗</div>
-        <div>
-          <div class="service-badge">Bookmark Manager</div>
-          <div class="service-name">LinkHub</div>
+      <div class="svc-card">
+        <div class="svc-idx">02</div>
+        <div class="svc-logo">
+          <img src="assets/img/logos/linkhub.svg" alt="LinkHub">
         </div>
-        <p class="service-desc">
-          흩어진 링크를 하나로. LinkHub는 강력한 북마크 매니저로, 웹에서 발견한 모든 것을 체계적으로
-          저장하고 관리합니다. 태그, 컬렉션, 스마트 검색으로 필요한 링크를 언제나 즉시 찾을 수 있습니다.
+        <div class="svc-tag">Bookmark Manager</div>
+        <p class="svc-desc">
+          흩어진 링크를 하나로. LinkHub는 강력한 북마크 매니저로, 웹에서 발견한 모든 것을
+          체계적으로 저장하고 관리합니다. 태그, 컬렉션, 스마트 검색으로 필요한 링크를 언제나 즉시 찾을 수 있습니다.
         </p>
-        <a href="https://linkhub.nbyte.xyz" target="_blank" class="service-link">
+        <a href="https://linkhub.nbyte.xyz" target="_blank" class="svc-link">
           Launch App
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
 
       <!-- 03 · LOTTERYN -->
-      <div class="service-card">
-        <div class="service-idx">03</div>
-        <div class="service-icon-wrap">🎯</div>
-        <div>
-          <div class="service-badge">Lottery</div>
-          <div class="service-name">LOTTERYN</div>
+      <div class="svc-card">
+        <div class="svc-idx">03</div>
+        <div class="svc-logo">
+          <img src="assets/img/logos/lotteryn.svg" alt="LOTTERYN">
         </div>
-        <p class="service-desc">
-          당신의 행운을 데이터로. LOTTERYN은 로또 번호 통계 분석, 추첨 시뮬레이션, 당첨 이력 관리를
-          제공하는 스마트 로또 서비스입니다. 행운도 전략이 될 수 있습니다.
+        <div class="svc-tag">Lottery</div>
+        <p class="svc-desc">
+          당신의 행운을 데이터로. LOTTERYN은 로또 번호 통계 분석, 추첨 시뮬레이션,
+          당첨 이력 관리를 제공하는 스마트 로또 서비스입니다. 행운도 전략이 될 수 있습니다.
         </p>
-        <a href="https://lotteryn.nbyte.xyz" target="_blank" class="service-link">
+        <a href="https://lotteryn.nbyte.xyz" target="_blank" class="svc-link">
           Launch App
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
 
       <!-- 04 · CodeWell -->
-      <div class="service-card">
-        <div class="service-idx">04</div>
-        <div class="service-icon-wrap">⚙️</div>
-        <div>
-          <div class="service-badge">DevTool</div>
-          <div class="service-name">CodeWell</div>
+      <div class="svc-card">
+        <div class="svc-idx">04</div>
+        <div class="svc-logo">
+          <img src="assets/img/logos/codewell.svg" alt="CodeWell">
         </div>
-        <p class="service-desc">
+        <div class="svc-tag">DevTool</div>
+        <p class="svc-desc">
           개발자를 위한 개발자의 도구. CodeWell은 코드 포맷팅, 변환, 테스트, 유틸리티 등
           개발 과정에서 반복적으로 필요한 작업들을 브라우저에서 즉시 처리할 수 있는 올인원 DevTool 플랫폼입니다.
         </p>
-        <a href="https://codewell.nbyte.xyz" target="_blank" class="service-link">
+        <a href="https://codewell.nbyte.xyz" target="_blank" class="svc-link">
           Launch App
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
 
     </div>
   </section>
 
-  <!-- ─── ABOUT ─────────────────────────────────────── -->
+  <!-- ABOUT -->
   <section class="about" id="about">
     <div class="about-grid">
       <div class="reveal">
-        <div class="section-eyebrow">About NBYTE</div>
-        <h2 class="section-title">문제를 해결하는<br>소프트웨어를 만듭니다.</h2>
+        <div class="eyebrow">About NBYTE</div>
+        <h2 class="sec-title">문제를 해결하는<br>소프트웨어를 만듭니다.</h2>
         <p class="about-body">
           NBYTE는 <strong>실제로 필요한 것</strong>을 만드는 팀입니다.
           화려한 기술보다 실질적인 가치를, 복잡한 기능보다 명확한 경험을 추구합니다.
           우리가 만드는 모든 서비스는 사용자의 삶에 진짜 도움이 되어야 한다는 믿음에서 출발합니다.
         </p>
-        <a href="mailto:nbytecorp@gmail.com" class="btn-outline">
+        <a href="mailto:nbytecontact@gmail.com" class="btn-ghost">
           팀에 합류하기
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
 
-      <div class="pillars reveal">
+      <div class="pillars reveal reveal-delay">
         <div class="pillar">
-          <div class="pillar-icon">🎯</div>
+          <div class="pillar-num">01</div>
           <div>
             <div class="pillar-title">Problem-First Approach</div>
             <div class="pillar-desc">기술이 아닌 문제에서 시작합니다. 진짜 필요에서 출발한 제품을 만듭니다.</div>
           </div>
         </div>
         <div class="pillar">
-          <div class="pillar-icon">⚡</div>
+          <div class="pillar-num">02</div>
           <div>
             <div class="pillar-title">Speed &amp; Simplicity</div>
             <div class="pillar-desc">빠르고 단순한 경험. 불필요한 복잡함 없이 핵심에 집중합니다.</div>
           </div>
         </div>
         <div class="pillar">
-          <div class="pillar-icon">🔒</div>
+          <div class="pillar-num">03</div>
           <div>
             <div class="pillar-title">Reliability</div>
             <div class="pillar-desc">신뢰할 수 있는 소프트웨어. 언제 어디서나 안정적으로 작동합니다.</div>
           </div>
         </div>
         <div class="pillar">
-          <div class="pillar-icon">🌱</div>
+          <div class="pillar-num">04</div>
           <div>
             <div class="pillar-title">Continuous Growth</div>
             <div class="pillar-desc">사용자 피드백과 함께 끊임없이 개선하고 성장합니다.</div>
@@ -607,7 +622,7 @@
     </div>
   </section>
 
-  <!-- ─── TECH STRIP ────────────────────────────────── -->
+  <!-- TECH STRIP -->
   <div class="tech-strip reveal">
     <div class="tech-strip-inner">
       <div class="tech-strip-label">
@@ -627,24 +642,24 @@
     </div>
   </div>
 
-  <!-- ─── CTA ──────────────────────────────────────── -->
+  <!-- CTA -->
   <section class="cta">
     <div class="cta-inner reveal">
       <h2>함께 만들어가고<br>싶으신가요?</h2>
       <p>NBYTE의 서비스를 사용하거나 팀에 합류하고 싶다면 연락해주세요.</p>
-      <a href="mailto:nbytecorp@gmail.com" class="btn-fill">
+      <a href="mailto:nbytecontact@gmail.com" class="btn-white">
         Get in Touch
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
       </a>
     </div>
   </section>
 
-  <!-- ─── FOOTER ────────────────────────────────────── -->
+  <!-- FOOTER -->
   <footer>
     <div class="footer-grid">
       <div>
-        <div class="footer-brand-name">NBYTE</div>
-        <p class="footer-brand-desc">복잡한 문제를 단순하고 강력한 소프트웨어로 해결합니다. 우리는 계속 만들어갑니다.</p>
+        <div class="footer-logo">NBYTE</div>
+        <p class="footer-tagline">복잡한 문제를 단순하고 강력한 소프트웨어로 해결합니다. 우리는 계속 만들어갑니다.</p>
       </div>
       <div>
         <div class="footer-col-title">Services</div>
@@ -660,13 +675,13 @@
         <ul class="footer-links">
           <li><a href="#about">소개</a></li>
           <li><a href="https://techblog.nbyte.xyz" target="_blank">Tech Blog</a></li>
-          <li><a href="mailto:nbytecorp@gmail.com">Contact</a></li>
+          <li><a href="mailto:nbytecontact@gmail.com">Contact</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-col-title">Contact</div>
         <ul class="footer-links">
-          <li><a href="mailto:nbytecorp@gmail.com">nbytecorp@gmail.com</a></li>
+          <li><a href="mailto:nbytecontact@gmail.com">nbytecontact@gmail.com</a></li>
         </ul>
       </div>
     </div>
@@ -678,28 +693,27 @@
   </footer>
 
   <script>
-    // ── Scroll Reveal ──────────────────────────────
-    const revealEls = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver(
-      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
-      { threshold: 0.08 }
+    // Scroll reveal
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+      { threshold: 0.07 }
     );
-    revealEls.forEach(el => revealObserver.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // ── Smooth Scroll ──────────────────────────────
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', function(e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        const t = document.querySelector(this.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
     });
 
-    // ── Nav scroll tint ────────────────────────────
-    const nav = document.querySelector('.nav');
+    // Nav opacity on scroll
+    const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
-      nav.style.background = window.scrollY > 40
-        ? 'rgba(8,9,10,0.96)'
-        : 'rgba(8,9,10,0.82)';
+      nav.style.background = window.scrollY > 30
+        ? 'rgba(0,0,0,0.97)'
+        : 'rgba(0,0,0,0.88)';
     }, { passive: true });
   </script>
 </body>

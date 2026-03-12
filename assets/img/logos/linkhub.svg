@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <rect width="500" height="500" rx="0" fill="#0e0e0e"/>
+  <defs>
+    <linearGradient id="bookmarkGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#4fc3f7"/>
+      <stop offset="50%"  stop-color="#5c6bc0"/>
+      <stop offset="100%" stop-color="#7b1fa2"/>
+    </linearGradient>
+    <linearGradient id="moonGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#4a5bc9"/>
+      <stop offset="100%" stop-color="#8e24aa"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Bookmark ribbon shape -->
+  <path
+    d="M 185 90 L 310 90 Q 318 90 318 98
+       L 318 355 L 248 305 L 178 355 L 178 98
+       Q 178 90 185 90 Z"
+    fill="url(#bookmarkGrad)"
+  />
+
+  <!-- Crescent moon (overlapping right side) -->
+  <path
+    d="M 295 145
+       A 115 115 0 1 1 295 365
+       A 85  85  0 1 0 295 145 Z"
+    fill="url(#moonGrad)"
+    opacity="0.92"
+  />
+</svg>
