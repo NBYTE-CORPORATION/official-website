@@ -1,7 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#000000"/>
-  <text x="5" y="23" font-family="'Space Grotesk', system-ui, sans-serif" font-size="18" font-weight="700" fill="#ffffff" letter-spacing="-0.5">N</text>
-  <rect x="18" y="8" width="7" height="2" rx="1" fill="#ffffff"/>
-  <rect x="18" y="13" width="7" height="2" rx="1" fill="#ffffff" opacity="0.6"/>
-  <rect x="18" y="18" width="5" height="2" rx="1" fill="#ffffff" opacity="0.3"/>
+  <rect width="32" height="32" rx="6" fill="#111111"/>
+  <!-- Bold geometric N -->
+  <path d="M7 7 L7 25 L10.5 25 L10.5 12.5 L18 25 L25 25 L25 7 L21.5 7 L21.5 19.5 L14 7 Z" fill="white"/>
 </svg>

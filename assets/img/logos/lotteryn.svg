@@ -1,3 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" fill="none">
-  <text x="8" y="30" font-family="'Space Grotesk', system-ui, sans-serif" font-size="26" font-weight="700" fill="#ffffff" letter-spacing="-0.5">LOTTERYN</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <rect width="500" height="500" rx="60" fill="#111111"/>
+  <!-- 3D isometric cube (white outline, dark fill) -->
+  <!-- Top face -->
+  <polygon
+    points="250,110  370,175  250,240  130,175"
+    fill="#1a1a1a"
+    stroke="white"
+    stroke-width="16"
+    stroke-linejoin="round"
+  />
+  <!-- Left face -->
+  <polygon
+    points="130,175  250,240  250,390  130,325"
+    fill="#141414"
+    stroke="white"
+    stroke-width="16"
+    stroke-linejoin="round"
+  />
+  <!-- Right face -->
+  <polygon
+    points="370,175  250,240  250,390  370,325"
+    fill="#0d0d0d"
+    stroke="white"
+    stroke-width="16"
+    stroke-linejoin="round"
+  />
 </svg>

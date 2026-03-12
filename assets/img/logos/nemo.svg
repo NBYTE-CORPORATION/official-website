@@ -1,3 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" fill="none">
-  <text x="8" y="30" font-family="'Space Grotesk', system-ui, sans-serif" font-size="26" font-weight="700" fill="#ffffff" letter-spacing="-0.5">Nemo</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <rect width="500" height="500" rx="60" fill="#0d0d0d"/>
+  <!-- Open rounded rectangle frame — top-right corner is open/missing -->
+  <!-- Top horizontal segment (stops before top-right corner) -->
+  <path
+    d="M 155 100 L 320 100
+       M 395 165 L 395 355 Q 395 405 345 405
+         L 155 405 Q 105 405 105 355
+         L 105 165 Q 105 100 155 100"
+    stroke="white"
+    stroke-width="56"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+  />
 </svg>

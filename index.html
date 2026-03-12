@@ -242,16 +242,15 @@
 
     /* logo image area */
     .svc-logo {
-      height: 40px;
-      display: flex; align-items: center;
+      width: 64px; height: 64px;
+      display: flex; align-items: center; justify-content: center;
       margin-bottom: 28px;
+      flex-shrink: 0;
     }
     .svc-logo img {
-      height: 100%; width: auto;
-      object-fit: contain; object-position: left center;
-      max-width: 200px;
-      /* invert to white if logos are dark-colored */
-      filter: brightness(0) invert(1);
+      width: 100%; height: 100%;
+      object-fit: contain;
+      border-radius: 14px;
     }
 
     .svc-tag {
