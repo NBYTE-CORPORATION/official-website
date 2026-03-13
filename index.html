@@ -245,9 +245,19 @@
       margin-bottom: 28px;
     }
 
+    /* logo + name row */
+    .svc-header {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 20px;
+    }
+    .svc-name {
+      font-size: 20px; font-weight: 700;
+      letter-spacing: -0.01em; color: var(--white);
+    }
+
     /* logo image area */
     .svc-logo {
-      width: 64px; height: 64px;
+      width: 48px; height: 48px;
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 28px;
       flex-shrink: 0;
@@ -259,12 +269,13 @@
     }
 
     .svc-tag {
-      font-family: var(--mono); font-size: 9px;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--grey-2);
+      font-family: var(--mono); font-size: 11px;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
       border: 1px solid var(--border-mid);
-      padding: 3px 8px; border-radius: 1px;
-      display: inline-block; margin-bottom: 16px;
+      padding: 5px 12px; border-radius: 2px;
+      display: inline-block; margin-bottom: 18px;
     }
 
     .svc-desc {
@@ -508,9 +519,11 @@
       <!-- 01 · Nemo -->
       <div class="svc-card">
         <div class="svc-idx">01</div>
-        <!-- replace src with actual logo once downloaded -->
-        <div class="svc-logo">
-          <img src="assets/img/logos/nemo.png" alt="Nemo">
+        <div class="svc-header">
+          <div class="svc-logo">
+            <img src="assets/img/logos/nemo.png" alt="Nemo">
+          </div>
+          <span class="svc-name">Nemo</span>
         </div>
         <div class="svc-tag">Workspace</div>
         <p class="svc-desc">
@@ -526,8 +539,11 @@
       <!-- 02 · LinkHub -->
       <div class="svc-card">
         <div class="svc-idx">02</div>
-        <div class="svc-logo">
-          <img src="assets/img/logos/linkhub.svg" alt="LinkHub">
+        <div class="svc-header">
+          <div class="svc-logo">
+            <img src="assets/img/logos/linkhub.svg" alt="LinkHub">
+          </div>
+          <span class="svc-name">LinkHub</span>
         </div>
         <div class="svc-tag">Bookmark Manager</div>
         <p class="svc-desc">
@@ -543,8 +559,11 @@
       <!-- 03 · LOTTERYN -->
       <div class="svc-card">
         <div class="svc-idx">03</div>
-        <div class="svc-logo">
-          <img src="assets/img/logos/lotteryn.svg" alt="LOTTERYN">
+        <div class="svc-header">
+          <div class="svc-logo">
+            <img src="assets/img/logos/lotteryn.svg" alt="LOTTERYN">
+          </div>
+          <span class="svc-name">LOTTERYN</span>
         </div>
         <div class="svc-tag">Lottery</div>
         <p class="svc-desc">
@@ -560,8 +579,11 @@
       <!-- 04 · CodeWell -->
       <div class="svc-card">
         <div class="svc-idx">04</div>
-        <div class="svc-logo">
-          <img src="assets/img/logos/codewell.png" alt="CodeWell">
+        <div class="svc-header">
+          <div class="svc-logo">
+            <img src="assets/img/logos/codewell.png" alt="CodeWell">
+          </div>
+          <span class="svc-name">CodeWell</span>
         </div>
         <div class="svc-tag">DevTool</div>
         <p class="svc-desc">
