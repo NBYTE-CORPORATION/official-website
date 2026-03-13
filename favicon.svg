@@ -1,5 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#111111"/>
-  <!-- Thin geometric N -->
-  <path d="M7 7 L7 25 L9.5 25 L9.5 11.5 L19 25 L25 25 L25 7 L22.5 7 L22.5 20.5 L13 7 Z" fill="white"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <rect width="500" height="500" fill="#000"/>
+  <!-- Bold geometric 'n' letterform:
+       Left stem: x=105-195, full height
+       Arch: top portion with rounded outer top-right corner
+       Right stem: x=305-395, from arch bottom down
+       Gap: x=195-305, open at bottom -->
+  <path d="M 105 395 L 105 110 L 305 110 Q 395 110 395 235 L 395 395 L 305 395 L 305 235 L 195 235 L 195 395 Z" fill="white"/>
 </svg>
