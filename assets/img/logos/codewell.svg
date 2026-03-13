@@ -5,7 +5,7 @@
     points="165,175  95,250  165,325"
     fill="none"
     stroke="white"
-    stroke-width="52"
+    stroke-width="20"
     stroke-linecap="round"
     stroke-linejoin="round"
   />
@@ -14,7 +14,7 @@
     x1="220" y1="335"
     x2="280" y2="165"
     stroke="white"
-    stroke-width="52"
+    stroke-width="20"
     stroke-linecap="round"
   />
   <!-- > bracket -->
@@ -22,7 +22,7 @@
     points="335,175  405,250  335,325"
     fill="none"
     stroke="white"
-    stroke-width="52"
+    stroke-width="20"
     stroke-linecap="round"
     stroke-linejoin="round"
   />
