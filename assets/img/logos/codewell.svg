@@ -1,28 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
-  <rect width="500" height="500" rx="0" fill="#000000"/>
-  <!-- < bracket -->
+  <rect width="500" height="500" fill="#000"/>
+  <!-- </> code symbol with rounded ends and joins -->
+  <!-- < chevron -->
   <polyline
-    points="165,175  95,250  165,325"
+    points="200,128  112,250  200,372"
     fill="none"
     stroke="white"
-    stroke-width="20"
+    stroke-width="36"
     stroke-linecap="round"
     stroke-linejoin="round"
   />
   <!-- / slash -->
   <line
-    x1="220" y1="335"
-    x2="280" y2="165"
+    x1="228" y1="372"
+    x2="272" y2="128"
     stroke="white"
-    stroke-width="20"
+    stroke-width="36"
     stroke-linecap="round"
   />
-  <!-- > bracket -->
+  <!-- > chevron -->
   <polyline
-    points="335,175  405,250  335,325"
+    points="300,128  388,250  300,372"
     fill="none"
     stroke="white"
-    stroke-width="20"
+    stroke-width="36"
     stroke-linecap="round"
     stroke-linejoin="round"
   />
